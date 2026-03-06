@@ -21,7 +21,7 @@ st.markdown("""
 .block-container {padding-top: 0.8rem; padding-bottom: 1.2rem; padding-left: 1.2rem; padding-right: 1.2rem; max-width: 100%;}
 section[data-testid="stSidebar"] > div {background: #eef4fb;}
 html, body, [class*="css"] {font-family: Inter, system-ui, sans-serif;}
-.main-banner {background: linear-gradient(120deg, #12385a 0%, #1d5f94 55%, #5aa9ff 100%); border-radius: 24px; padding: 1.35rem 1.45rem; color: white; margin-bottom: 1rem; box-shadow: 0 14px 30px rgba(18,56,90,.16);}
+.main-banner {background: linear-gradient(120deg, #12385a 0%, #1d5f94 55%, #5aa9ff 100%); border-radius: 24px; padding: 0.95rem 1.2rem; color: white; margin-bottom: 0.7rem; box-shadow: 0 14px 30px rgba(18,56,90,.16);}
 .main-banner h1 {margin: 0; font-size: 2.25rem; line-height: 1.05; font-weight: 800;}
 .main-banner p {margin: 0.5rem 0 0 0; opacity: 0.93; font-size: 1rem;}
 .ribbon-row {display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.9rem;}
@@ -218,13 +218,6 @@ rel_index = view["Relationship Index"].mean() if len(view) else 0
 st.markdown("""
 <div class="main-banner">
   <h1>Universal Bank Client Studio</h1>
-  <p>A full redesign for sharing: executive storytelling, segment exploration, model framing, and campaign actions in one clean app.</p>
-  <div class="ribbon-row">
-    <div class="ribbon">Fresh layout</div>
-    <div class="ribbon">Consulting-style sections</div>
-    <div class="ribbon">Light mode</div>
-    <div class="ribbon">Deployment safe</div>
-  </div>
 </div>
 """, unsafe_allow_html=True)
 
