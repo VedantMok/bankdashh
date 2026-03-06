@@ -21,7 +21,7 @@ st.markdown("""
 .block-container {padding-top: 0.8rem; padding-bottom: 1.2rem; padding-left: 1.2rem; padding-right: 1.2rem; max-width: 100%;}
 section[data-testid="stSidebar"] > div {background: #eef4fb;}
 html, body, [class*="css"] {font-family: Inter, system-ui, sans-serif;}
-.main-banner {background: linear-gradient(120deg, #12385a 0%, #1d5f94 55%, #5aa9ff 100%); border-radius: 24px; padding: 0.95rem 1.2rem; color: white; margin-bottom: 0.7rem; box-shadow: 0 14px 30px rgba(18,56,90,.16);}
+.main-banner {background: linear-gradient(120deg, #12385a 0%, #1d5f94 55%, #5aa9ff 100%); border-radius: 24px; padding: 1.35rem 1.45rem; color: white; margin-bottom: 1rem; box-shadow: 0 14px 30px rgba(18,56,90,.16);}
 .main-banner h1 {margin: 0; font-size: 2.25rem; line-height: 1.05; font-weight: 800;}
 .main-banner p {margin: 0.5rem 0 0 0; opacity: 0.93; font-size: 1rem;}
 .ribbon-row {display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.9rem;}
@@ -188,7 +188,7 @@ uploaded = st.sidebar.file_uploader("Upload UniversalBank CSV", type=["csv"])
 df = load_data(uploaded)
 
 st.sidebar.markdown("### Studio View")
-page = st.sidebar.radio("Choose section", ["Executive Brief", "Audience Studio", "Model Room", "Campaign Builder"], label_visibility="collapsed")
+page = st.sidebar.radio("Choose section", ["Descriptive", "Diagnostic", "Predictive", "Prescriptive"], label_visibility="collapsed")
 
 st.sidebar.markdown("### Filters")
 income_opts = [x for x in df["Income Band"].dropna().unique()]
@@ -218,6 +218,13 @@ rel_index = view["Relationship Index"].mean() if len(view) else 0
 st.markdown("""
 <div class="main-banner">
   <h1>Universal Bank Client Studio</h1>
+  <p>A full redesign for sharing: executive storytelling, segment exploration, model framing, and campaign actions in one clean app.</p>
+  <div class="ribbon-row">
+    <div class="ribbon">Fresh layout</div>
+    <div class="ribbon">Consulting-style sections</div>
+    <div class="ribbon">Light mode</div>
+    <div class="ribbon">Deployment safe</div>
+  </div>
 </div>
 """, unsafe_allow_html=True)
 
@@ -232,8 +239,8 @@ for col, label, value, note in [
 
 st.markdown("<div style='height:0.6rem'></div>", unsafe_allow_html=True)
 
-if page == "Executive Brief":
-    st.markdown("<div class='section-head'>Executive Brief</div>", unsafe_allow_html=True)
+if page == "Descriptive":
+    st.markdown("<div class='section-head'>Descriptive</div>", unsafe_allow_html=True)
     left, right = st.columns([1.05, 0.95], gap="large")
 
     with left:
@@ -269,8 +276,8 @@ if page == "Executive Brief":
         st.dataframe(inc_mix.reset_index(), use_container_width=True, hide_index=True)
         st.markdown("</div>", unsafe_allow_html=True)
 
-elif page == "Audience Studio":
-    st.markdown("<div class='section-head'>Audience Studio</div>", unsafe_allow_html=True)
+elif page == "Diagnostic":
+    st.markdown("<div class='section-head'>Diagnostic</div>", unsafe_allow_html=True)
     a, b = st.columns([1.1, 0.9], gap="large")
     with a:
         st.markdown("<div class='panel'><div class='panel-title'>Segment Matrix: Education x Income</div>", unsafe_allow_html=True)
@@ -303,8 +310,8 @@ elif page == "Audience Studio":
     st.dataframe(product_lift(view), use_container_width=True, hide_index=True)
     st.markdown("</div>", unsafe_allow_html=True)
 
-elif page == "Model Room":
-    st.markdown("<div class='section-head'>Model Room</div>", unsafe_allow_html=True)
+elif page == "Predictive":
+    st.markdown("<div class='section-head'>Predictive</div>", unsafe_allow_html=True)
     a, b = st.columns([1.05, 0.95], gap="large")
     with a:
         st.markdown("<div class='panel'><div class='panel-title'>Model Scoreboard</div>", unsafe_allow_html=True)
@@ -335,8 +342,8 @@ elif page == "Model Room":
         st.dataframe(prob_df.reset_index().rename(columns={"index": "Probability Band"}), use_container_width=True, hide_index=True)
         st.markdown("</div>", unsafe_allow_html=True)
 
-elif page == "Campaign Builder":
-    st.markdown("<div class='section-head'>Campaign Builder</div>", unsafe_allow_html=True)
+elif page == "Prescriptive":
+    st.markdown("<div class='section-head'>Prescriptive</div>", unsafe_allow_html=True)
     leads = view[view["Predicted Class"] == 1].copy().sort_values("Predicted Probability", ascending=False)
     a, b = st.columns([1.05, 0.95], gap="large")
     with a:
