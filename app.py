@@ -1,15 +1,4 @@
 from pathlib import Path
-import subprocess, sys
-
-def _install(pkg: str):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", pkg])
-
-try:
-    import plotly.express as px  # type: ignore
-except ModuleNotFoundError:
-    _install("plotly")
-    import plotly.express as px  # type: ignore
-
 import pandas as pd
 import numpy as np
 import streamlit as st
