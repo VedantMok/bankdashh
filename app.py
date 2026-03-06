@@ -631,4 +631,3 @@ with t4:
     row = sample.iloc[0].copy()
     st.markdown(f"<div class='offer'><b>Predicted acceptance probability:</b> {prob:.1%}<br><b>Persona:</b> {persona(row)}<br><b>Recommended action:</b> {offer(row)}</div>", unsafe_allow_html=True)
 
-st.caption("This version avoids Plotly, scikit-learn, and scipy. It still covers descriptive, diagnostic, predictive, and prescriptive analytics for the assignment.")
